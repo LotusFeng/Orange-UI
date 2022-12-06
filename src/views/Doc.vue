@@ -84,20 +84,27 @@ export default {
   }
 }
 aside {
-  background: lightblue;
+  background: rgb(245, 182, 102);
   width: 150px;
-  padding: 16px;
   position: fixed;
   top: 0;
   left: 0;
-  padding-top: 70px;
+  padding: 70px 0 16px;
   height: 100%;
   > h2 {
     margin-bottom: 4px;
+    padding: 0 16px;
   }
   > ol {
     > li {
-      padding: 4px 0;
+      >a {
+        display: block;
+        padding: 4px 16px;
+        text-decoration: none;
+      }
+      .router-link-active {
+        background: white;
+      }
     }
   }
   main {
