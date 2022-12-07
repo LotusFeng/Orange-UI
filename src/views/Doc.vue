@@ -44,13 +44,13 @@
 
 <script lang="ts">
 import Topnav from '../components/Topnav.vue';
-import {inject, Ref} from 'vue'
+import {inject, Ref} from 'vue';
 
 export default {
   components: {Topnav},
-  setup(){
-    const menuVisible = inject<Ref<boolean>>('menuVisible')
-    return {menuVisible}
+  setup() {
+    const menuVisible = inject<Ref<boolean>>('menuVisible');
+    return {menuVisible};
   }
 };
 </script>
@@ -60,9 +60,11 @@ export default {
   display: flex;
   flex-direction: column;
   height: 100vh;
+
   > .nav {
     flex-shrink: 0;
   }
+
   > .content {
     flex-grow: 1;
     padding-top: 60px;
@@ -72,43 +74,76 @@ export default {
     }
   }
 }
+
 .content {
   display: flex;
+
   > aside {
     flex-shrink: 0;
   }
+
   > main {
     flex-grow: 1;
     padding: 16px;
     background: white;
   }
 }
+
 aside {
-  background: rgb(245, 182, 102);
+  background: white;
   width: 150px;
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   padding: 70px 0 16px;
   height: 100%;
+  transition: all 0.4s cubic-bezier(0.68, 0.18, 0.53, 0.18) 0.1s;
+  box-shadow: 5px 0 5px rgba(#333, 0.1);
   > h2 {
     margin-bottom: 4px;
     padding: 0 16px;
   }
+
   > ol {
     > li {
-      >a {
+      > a {
         display: block;
         padding: 4px 16px;
         text-decoration: none;
+        position: relative;
       }
+
       .router-link-active {
-        background: white;
+        background:#FFE4B5;
+        border-right: 3px solid #FFA500;
+        @media (min-width: 500px) {
+          border-right: none;
+          &::after {
+            content: "";
+            display: block;
+            animation: bdrolate 0.8s;
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 3px;
+            height: 32px;
+            background-color: #FFA500;
+          }
+        }
       }
     }
   }
-  main {
-    overflow: auto;
+  @keyframes bdrolate {
+    0% {
+      transform: rotateX(90deg);
+    }
+    100% {
+      transform: rotateX(0deg);
+    }
   }
+}
+
+main {
+  overflow: auto;
 }
 </style>
