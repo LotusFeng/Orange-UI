@@ -46,9 +46,11 @@ $color: #007974;
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 20;
+  z-index: 10;
   justify-content: center;
   align-items: center;
+  box-shadow: 0 5px 5px rgba(#333, 0.1);
+  background: white;
 
   > .logo {
     max-width: 6em;
@@ -64,6 +66,7 @@ $color: #007974;
     display: flex;
     white-space: nowrap;
     flex-wrap: nowrap;
+    flex-direction: row;
 
     > li {
       margin: 0 1em;
@@ -78,6 +81,7 @@ $color: #007974;
     top: 50%;
     transform: translateY(-50%);
     display: none;
+    overflow: hidden;
   }
 
   @media (max-width: 500px) {
