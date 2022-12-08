@@ -47,11 +47,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$green: #02bcb0;
+$green: #0099CC;
 $border-radius: 4px;
-$color: #007974;
+$text: black;
 .topnavAndBanner {
-  background: linear-gradient(145deg, rgba(227, 255, 253, 1) 0%, rgba(183, 233, 230, 1) 100%);
+  background: linear-gradient(90deg, rgba(255,228,181,1) 49%, rgba(255,165,0,0.8799894957983193) 100%);
   clip-path: ellipse(80% 60% at 50% 40%);
 }
 
@@ -101,7 +101,7 @@ $color: #007974;
 }
 
 .banner {
-  color: $color;
+  color: $text;
   padding: 100px 0;
   display: flex;
   justify-content: center;
