@@ -1,29 +1,28 @@
 <template>
-  <template v-if="visible">
-    <teleport to="body">
-      <div class="gulu-dialog-overlay" @click="onClickOverlay"></div>
-      <div class="gulu-dialog-wrapper">
-        <div class="gulu-dialog">
-          <header>
-            <slot name="title"/>
-            <span @click="close" class="gulu-dialog-close"></span>
-          </header>
-          <main>
-            <slot name="content"/>
-          </main>
-          <footer>
-            <Button @click="ok" level="main">OK</Button>
-            <Button @click="cancel">Cancel</Button>
-          </footer>
-        </div>
+<template v-if="visible">
+  <Teleport to="body">
+    <div class="gulu-dialog-overlay" @click="onClickOverlay"></div>
+    <div class="gulu-dialog-wrapper">
+      <div class="gulu-dialog">
+        <header>
+          <slot name="title" />
+          <span @click="close" class="gulu-dialog-close"></span>
+        </header>
+        <main>
+          <slot name="content" />
+        </main>
+        <footer>
+          <Button level="main" @click="ok">OK</Button>
+          <Button @click="cancel">Cancel</Button>
+        </footer>
       </div>
-    </teleport>
-  </template>
+    </div>
+  </Teleport>
+</template>
 </template>
 
 <script lang="ts">
-import Button from './Button.vue';
-
+import Button from "./Button.vue";
 export default {
   props: {
     visible: {
@@ -35,37 +34,39 @@ export default {
       default: true
     },
     ok: {
-      type: Function,
+      type: Function
     },
     cancel: {
-      type: Function,
+      type: Function
     }
   },
-  components: {Button},
+  components: {
+    Button,
+  },
   setup(props, context) {
     const close = () => {
-      context.emit('update:visible', false);
-    };
+      context.emit('update:visible', false)
+    }
     const onClickOverlay = () => {
       if (props.closeOnClickOverlay) {
-        close();
+        close()
       }
-    };
+    }
     const ok = () => {
-      if (props.ok?.() !== false) { //props.ok && props.ok() !== false
-        close();
+      if (props.ok?.() !== false) {
+        close()
       }
-    };
+    }
     const cancel = () => {
       props.cancel?.()
-      close();
-    };
+      close()
+    }
     return {
       close,
       onClickOverlay,
       ok,
       cancel
-    };
+    }
   }
 };
 </script>
@@ -77,7 +78,7 @@ $border-color: #d9d9d9;
 .gulu-dialog {
   background: white;
   border-radius: $radius;
-  box-shadow: 0 0 3px fade-out(black, 0.5);
+  box-shadow: 0 0 3px fade_out(black, 0.5);
   min-width: 15em;
   max-width: 90%;
 
@@ -87,7 +88,7 @@ $border-color: #d9d9d9;
     left: 0;
     width: 100%;
     height: 100%;
-    background: fade-out(black, 0.5);
+    background: fade_out(black, 0.5);
     z-index: 10;
   }
 
@@ -99,7 +100,7 @@ $border-color: #d9d9d9;
     z-index: 11;
   }
 
-  > header {
+  >header {
     padding: 12px 16px;
     border-bottom: 1px solid $border-color;
     display: flex;
@@ -108,11 +109,11 @@ $border-color: #d9d9d9;
     font-size: 20px;
   }
 
-  > main {
+  >main {
     padding: 12px 16px;
   }
 
-  > footer {
+  >footer {
     border-top: 1px solid $border-color;
     padding: 12px 16px;
     text-align: right;
@@ -143,6 +144,7 @@ $border-color: #d9d9d9;
     &::after {
       transform: translate(-50%, -50%) rotate(45deg);
     }
+
   }
 }
 </style>

@@ -1,26 +1,24 @@
 <template>
   <button class="gulu-button" :class="classes" :disabled="disabled">
     <span v-if="loading" class="gulu-loadingIndicator"></span>
-    <slot/>
+    <slot />
   </button>
 </template>
-
 <script lang="ts">
-import {computed} from 'vue';
-
+import { computed } from "vue";
 export default {
   props: {
     theme: {
       type: String,
-      default: 'button'
+      default: "button",
     },
     size: {
       type: String,
-      default: 'normal',
+      default: "normal",
     },
     level: {
       type: String,
-      default: 'normal',
+      default: "normal",
     },
     disabled: {
       type: Boolean,
@@ -32,7 +30,7 @@ export default {
     }
   },
   setup(props) {
-    const {theme, size, level} = props;
+    const { theme, size, level } = props;
     const classes = computed(() => {
       return {
         [`gulu-theme-${theme}`]: theme,
@@ -40,11 +38,10 @@ export default {
         [`gulu-level-${level}`]: level,
       };
     });
-    return {classes};
-  }
+    return { classes };
+  },
 };
 </script>
-
 <style lang="scss">
 $h: 32px;
 $border-color: #d9d9d9;
@@ -65,26 +62,23 @@ $grey: grey;
   background: white;
   color: $color;
   border: 1px solid $border-color;
+  border-radius: $radius;
   box-shadow: 0 1px 0 fade-out(black, 0.95);
   transition: background 250ms;
-
   & + & {
     margin-left: 8px;
   }
-
   &:hover,
   &:focus {
     color: $blue;
+    border-color: $blue;
   }
-
   &:focus {
     outline: none;
   }
-
   &::-moz-focus-inner {
     border: 0;
   }
-
   &.gulu-theme-link {
     border-color: transparent;
     box-shadow: none;
@@ -180,7 +174,7 @@ $grey: grey;
     height: 14px;
     display: inline-block;
     margin-right: 4px;
-    border-radius: 8px;
+    border-radius: 8px; 
     border-color: $blue $blue $blue transparent;
     border-style: solid;
     border-width: 2px;
@@ -188,7 +182,7 @@ $grey: grey;
   }
 }
 @keyframes gulu-spin {
-  0%{transform: rotate(0deg)}
-  100%{transform: rotate(360deg)}
+  0%{transform: rotate(0deg)} 
+  100%{transform: rotate(360deg)} 
 }
 </style>
