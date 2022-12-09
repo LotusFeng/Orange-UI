@@ -99,7 +99,7 @@ aside {
   height: 100%;
   transition: all 0.4s cubic-bezier(0.68, 0.18, 0.53, 0.18) 0.1s;
   box-shadow: 5px 0 5px rgba(#333, 0.1);
-  z-index: 9;
+  z-index: 10;
   > h2 {
     margin-bottom: 4px;
     padding: 0 16px;
