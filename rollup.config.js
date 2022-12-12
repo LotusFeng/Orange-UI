@@ -8,7 +8,7 @@ export default {
   input: 'src/lib/index.ts',
   output: {
     globals: {
-      vue: 'Vue'
+      vue: 'Vue',
     },
     name: 'Orange',
     file: 'dist/lib/orange.js',
